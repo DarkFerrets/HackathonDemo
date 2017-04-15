@@ -30,7 +30,6 @@ module.exports = function(app) {
           ctx.session.count = 0;
         else
           ctx.session.count++;
-        console.log(ctx.session.count);
         var users = await User.find({ username: ctx.session.username });
         // 如果数据库中不包含此用户名，则它为新注册用户
         if (users.length == 0) {
