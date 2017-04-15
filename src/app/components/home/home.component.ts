@@ -32,6 +32,14 @@ export class HomeComponent implements OnInit {
       zoom: 10,
       center: [113.2644, 23.1291]
     });
+    map.setFeatures(['bg', 'point', 'building']);
+    map.plugin(['AMap.ToolBar'], function() {
+      map.addControl(new AMap.ToolBar());
+    });
+    var marker = new AMap.Marker({
+        position : [113.2644, 23.1291],
+        map : map
+});
   }
 
 }
