@@ -58,7 +58,6 @@ export class BasketComponent implements OnInit {
         this.materials = this.materials.filter(function(element) {
           return element['name'] != material.name;
         });
-        console.log(this.materials);
       }
       this.usedMaterials.push(material);
     }
