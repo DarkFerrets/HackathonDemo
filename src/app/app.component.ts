@@ -43,4 +43,9 @@ export class AppComponent {
       }
     });
   }
+
+  // 查看菜篮
+  checkBasket() {
+    this.router.navigate(['/basket', this.user.username]);
+  }
 }

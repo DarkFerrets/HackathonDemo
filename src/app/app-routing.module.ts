@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 // 引入 components
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { BasketComponent } from './components/basket/basket.component';
 
 const appRouters: Routes = [
   {
@@ -18,6 +19,10 @@ const appRouters: Routes = [
   {
     path: 'home/:username',
     component: HomeComponent
+  },
+  {
+    path: 'basket/:username',
+    component: BasketComponent
   }
 ];
 
