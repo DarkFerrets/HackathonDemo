@@ -96,10 +96,10 @@ export class HomeComponent implements OnInit {
 
       let infoWindow = new SimpleInfoWindow({
         infoTitle: '<strong><%- title %></strong>',
-        infoBody: '<p class="my-desc">' +
+        infoBody: '<div class="my-desc">' +
             //<%- html编码后插入
             '<%- body %>' +
-            '</p>',
+            '</div>',
           infoTplData: center.infoTplData,
 
           //基点指向marker的头部位置
