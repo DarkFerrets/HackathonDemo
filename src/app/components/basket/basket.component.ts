@@ -63,3 +63,13 @@ export class BasketComponent implements OnInit {
   }
 
 }
+
+@Component({
+  selector: 'bonues',
+  templateUrl: './bonues.component.html',
+  styleUrls: ['./bonues.component.sass']
+})
+export class BonuesComponent implements OnInit {
+  constructor() {}
+  ngOnInit() {}
+}

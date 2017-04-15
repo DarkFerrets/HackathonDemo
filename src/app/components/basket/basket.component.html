@@ -26,7 +26,7 @@
           <div class="crafting-item" *ngFor="let material of usedMaterials" [style.background-image]="'url(' + material.image + ')'"></div>
         </div>
         <div class="submit">
-          <button md-raised-button>合成！</button>
+          <button md-raised-button (click)="getBonues()">合成</button>
         </div>
       </md-card>
     </div>
