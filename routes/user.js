@@ -49,7 +49,7 @@ module.exports = function(app) {
           };
         } else {
           ctx.body = {
-            firstLogin: true,
+            firstLogin: false,
             isOK: true,
             username: users[0].username,
             avatar: users[0].avatar,
