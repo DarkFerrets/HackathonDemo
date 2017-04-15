@@ -1,15 +1,31 @@
 <div class="basket-layout" fxLayout="row">
-  <div fxFlex="10" fxHide.xs></div>
-  <div fxFlex.gt-xs="80" fxLayout.gt-xs="row" fxLayout.xs="column">
-    <div fxFlex.gt-xs="30">
+  <div fxFlex="10" fxHide.lt-md></div>
+  <div fxFlex.gt-sm="80" fxLayout.gt-sm="row" fxLayout.lt-md="column">
+    <div fxFlex.gt-sm="30">
       <md-card *ngIf="user">
         <div class="avatar" [style.background-image]="'url(' + user.avatar + ')'"></div>
-        <md-card-title>{{user.username}}</md-card-title>
+        <md-card-title class="name">{{user.username}}</md-card-title>
+        <div fxLayout="row">
+          <div class="user-info-item" fxFlex="33">
+            <div class="item-header">厨艺等级</div>
+            <div class="item-value">{{user.rank}}</div>
+          </div>
+          <div class="user-info-item" fxFlex="33">
+            <div class="item-header">拥有原料</div>
+            <div class="item-value">{{user.materials}}</div>
+          </div>
+          <div class="user-info-item" fxFlex="33">
+            <div class="item-header">合成菜肴</div>
+            <div class="item-value">{{user.dishes}}</div>
+          </div>
+        </div>
       </md-card>
     </div>
-    <div fxFlex.gt-xs="70">
-      <md-card>123</md-card>
+    <div fxFlex.gt-sm="70">
+      <md-card>
+        <md-card-title class="title">我的原材料</md-card-title>
+      </md-card>
     </div>
   </div>
-  <div fxFlex="10" fxHide.xs></div>
+  <div fxFlex="10" fxHide.lt-md></div>
 </div>

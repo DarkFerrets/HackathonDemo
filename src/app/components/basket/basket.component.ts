@@ -15,7 +15,8 @@ export class BasketComponent implements OnInit {
   constructor(public userService: UserService, public router: Router) {
     userService.getUser().subscribe((data) => {
       if (data.isOK) {
-        this.user = new User(data.username, data.avatar);
+        this.user = new User(data.username, data.avatar, data.rank,
+                             data.materials, data.dishes);
       } else {
         router.navigate(['/login', 'sign-in']);
       }
