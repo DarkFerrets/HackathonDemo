@@ -1,0 +1,59 @@
+<div class="basket-layout" fxLayout="row">
+  <div fxFlex="10" fxHide.lt-md></div>
+  <div fxFlex.gt-sm="80" fxLayout.gt-sm="row" fxLayout.lt-md="column">
+    <div fxFlex.gt-sm="30">
+      <md-card *ngIf="user">
+        <div class="avatar" [style.background-image]="'url(' + user.avatar + ')'"></div>
+        <md-card-title class="name">{{user.username}}</md-card-title>
+        <div fxLayout="row">
+          <div class="user-info-item" fxFlex="33">
+            <div class="item-header">厨艺等级</div>
+            <div class="item-value">{{user.rank}}</div>
+          </div>
+          <div class="user-info-item" fxFlex="33">
+            <div class="item-header">拥有原料</div>
+            <div class="item-value">{{user.materials}}</div>
+          </div>
+          <div class="user-info-item" fxFlex="33">
+            <div class="item-header">合成菜肴</div>
+            <div class="item-value">{{user.dishes}}</div>
+          </div>
+        </div>
+      </md-card>
+      <md-card>
+        <md-card-title class="title">合成台</md-card-title>
+        <div id="crafting-table">
+          <div class="crafting-item" *ngFor="let material of usedMaterials" [style.background-image]="'url(' + material.image + ')'"></div>
+        </div>
+        <div class="submit">
+          <button md-raised-button>合成！</button>
+        </div>
+      </md-card>
+    </div>
+    <div fxFlex.gt-sm="70">
+      <md-card>
+        <md-card-title class="title">我的原材料</md-card-title>
+        <div class="materials-container">
+          <div class="material" *ngFor="let material of materials">
+            <div class="image" [style.background-image]="'url(' + material.image + ')'" (click)="addMaterial(material)"></div>
+            <span class="name">{{material.name}}</span>
+            <span class="amount">{{material.number}}{{material.unit}}</span>
+          </div>
+        </div>
+      </md-card>
+      <md-card>
+        <md-card-title class="title">菜谱</md-card-title>
+        <div class="recipes">
+          <div class="recipe" *ngFor="let recipe of recipes">
+            <div class="image" [style.background-image]="'url(' + recipe.image + ')'"></div>
+            <div class="info">
+              <div class="header">{{recipe.name}}</div>
+              <div class="requirement">{{recipe.materials}}</div>
+            </div>
+          </div>
+        </div>
+      </md-card>
+    </div>
+  </div>
+  <div fxFlex="10" fxHide.lt-md></div>
+</div>

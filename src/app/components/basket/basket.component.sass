@@ -1,0 +1,110 @@
+.basket-layout
+  width: 100vw
+  padding: 8px 0px
+
+  md-card
+    margin: 16px 8px
+    padding: 24px 0px
+
+    .avatar
+      width: 72px
+      height: 72px
+      margin: 0 auto
+      border-radius: 36px
+      background-repeat: no-repeat
+      background-position: center center
+      background-size: cover
+
+    .name
+      text-align: center
+      margin: 8px 0px
+
+    .user-info-item
+      text-align: center
+
+      .item-header
+        font-size: 0.8em
+        color: #757575
+
+      .item-value
+        padding-top: 8px
+
+    .title
+      padding-left: 24px
+
+    #crafting-table
+      margin: 0px 24px
+      background-color: #eeeeee
+      padding: 8px 0px 0px 8px
+
+      .crafting-item
+        width: calc((100% - 24px)/3)
+        height: calc((100% - 32px)/3)
+        margin: 0px 8px 8px 0px
+        display: inline-block
+        border-radius: 4px
+        background-repeat: no-repeat
+        background-position: center center
+        background-size: cover
+
+    .submit
+      text-align: center
+      padding-top: 16px
+
+      button
+        background-color: #2196F3
+        color: #ffffff
+
+    .materials-container
+      padding: 0px 24px
+
+      .material
+        display: inline-block
+        width: 72px
+        margin: 0px 16px 16px 0px
+        text-align: center
+
+        .image
+          height: 72px
+          border-radius: 4px
+          background-repeat: no-repeat
+          background-position: center center
+          background-size: cover
+
+        .name
+          display: inline-block
+
+        .amount
+          color: #757575
+          font-size: 0.8em
+
+    .recipes
+      padding: 0px 24px
+
+      .recipe
+        height: 72px
+        padding: 16px 0px
+
+        .image
+          width: 72px
+          height: 72px
+          border-radius: 4px
+          background-repeat: no-repeat
+          background-position: center center
+          background-size: cover
+          display: inline-block
+
+        .info
+          display: inline-block
+          height: 72px
+          vertical-align: top
+          padding-left: 16px
+
+          .header
+            padding-bottom: 8px
+
+          .requirement
+            color: #757575
+
+      .recipe:not(:last-child)
+        border-bottom: 1px solid #bdbdbd

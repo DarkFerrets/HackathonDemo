@@ -14,16 +14,21 @@ import { RoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { WelcomeComponent } from './components/home/home.component';
+import { BasketComponent } from './components/basket/basket.component';
 
 // 引入 services
 import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
+import { BasketService } from './services/basket/basket.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    WelcomeComponent,
+    BasketComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +42,13 @@ import { UserService } from './services/user/user.service';
     // 路由模块
     RoutingModule
   ],
+  entryComponents: [
+    WelcomeComponent
+  ],
   providers: [
     AuthService,
-    UserService
+    UserService,
+    BasketService
   ],
   bootstrap: [AppComponent]
 })

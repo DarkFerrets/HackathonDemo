@@ -5,7 +5,10 @@ const mongoose = require('mongoose');
 // 定义凭证
 const userSchema = new mongoose.Schema({
   username: String,
-  avatar: String
+  avatar: String,
+  rank: String,
+  materials: Number,  // 拥有原材料的个数
+  dishes: Number  // 拥有菜肴的个数
 });
 const User = mongoose.model('User', userSchema);
 
@@ -29,19 +32,30 @@ module.exports = function(app) {
           // 创建新的用户
           let user = new User({
             username: ctx.session.username,
-            avatar: '/assets/images/default-avatar.jpg'
+            avatar: '/assets/images/default-avatar.jpg',
+            rank: '小试牛刀',
+            materials: 8,
+            dishes: 3
           });
           await user.save();
           ctx.body = {
+            firstLogin: true,
             isOK: true,
             username: user.username,
-            avatar: user.avatar
+            avatar: user.avatar,
+            rank: user.rank,
+            materials: user.materials,
+            dishes: user.dishes
           };
         } else {
           ctx.body = {
+            firstLogin: true,
             isOK: true,
             username: users[0].username,
-            avatar: users[0].avatar
+            avatar: users[0].avatar,
+            rank: users[0].rank,
+            materials: users[0].materials,
+            dishes: users[0].dishes
           };
         }
       }
