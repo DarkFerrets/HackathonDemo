@@ -22,6 +22,7 @@ import { BonuesComponent } from './components/basket/basket.component';
 import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
 import { BasketService } from './services/basket/basket.service';
+import { GameComponent } from './components/game/game.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BasketService } from './services/basket/basket.service';
     HomeComponent,
     WelcomeComponent,
     BasketComponent,
-    BonuesComponent
+    BonuesComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,

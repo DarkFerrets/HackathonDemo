@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { BasketComponent } from './components/basket/basket.component';
+import { GameComponent } from './components/game/game.component';
 
 const appRouters: Routes = [
   {
@@ -23,6 +24,10 @@ const appRouters: Routes = [
   {
     path: 'basket/:username',
     component: BasketComponent
+  },
+  {
+    path: 'game/:username/:place',
+    component: GameComponent
   }
 ];
 
