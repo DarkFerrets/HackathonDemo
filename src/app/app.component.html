@@ -1,3 +1,44 @@
-<h1>
-  {{title}}
-</h1>
+<div class="holy-grail">
+  <!-- 顶栏 -->
+  <header>
+    <md-toolbar class="fixed-toolbar">
+      <div class="toolbar-layout" fxLayout="row">
+        <div fxFlex="10" fxHide.xs></div>
+        <div fxFlex.gt-xs="80" class="toolbar-content" fxLayout="row">
+          <div class="logo"></div>
+          <div class="name">Hackathon Demo</div>
+          <div class="user" fxFlex *ngIf="user">
+            <div class="user-avatar" [mdMenuTriggerFor]="userMenu" [style.background-image]="'url(' + user.avatar + ')'"></div>
+            <md-menu #userMenu="mdMenu">
+              <button md-menu-item (click)="signOut()">
+                <md-icon>exit_to_app</md-icon>
+                <span>退出登录</span>
+              </button>
+            </md-menu>
+          </div>
+        </div>
+        <div fxFlex="10" fxHide.xs></div>
+      </div>
+    </md-toolbar>
+  </header>
+  <!-- 用于占位的假顶栏 -->
+  <md-toolbar></md-toolbar>
+
+  <!-- 内容 -->
+  <div class="holy-grail-body">
+    <!-- 子页面 -->
+    <router-outlet></router-outlet>
+  </div>
+
+  <!-- 底栏 -->
+  <footer class="footer">
+    <div fxLayout="row">
+      <div fxFlex="10" fxHide.xs></div>
+      <div fxFlex="80" fxFlex.xs="100" class="footer-content">
+        <hr class="divider">
+        <div class="footer-text">©️ 2017 Hackathon Demo；本网站由陈昕彤、符宇晖、刘忍和舒倩设计、搭建。</div>
+      </div>
+      <div fxFlex="10" fxHide.xs></div>
+    </div>
+  </footer>
+</div>
