@@ -4,6 +4,7 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 
 import { UserService } from '../../services/user/user.service';
 import { User } from '../../services/user/user';
+import { BasketService } from '../../services/basket/basket.service';
 
 declare var AMap: any;
 declare const AMapUI: any;
@@ -39,6 +40,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    // console.log(this);
+    var that = this;
     var map = new AMap.Map('map-container', {
       resizeEnable: true,
       zoom: 10,
@@ -71,6 +74,7 @@ export class HomeComponent implements OnInit {
         }
       },
       playFileds: [{
+        name: "永旺",
         position: [113.322598,23.120017]
       }]
     }];
@@ -104,11 +108,9 @@ export class HomeComponent implements OnInit {
           map.setZoomAndCenter(18, centerPos);
         } else {
           if (infoWindow.getIsOpen()) {
-            circle.hide();
             infoWindow.close();
           } else {
             infoWindow.open(map, marker.getPosition());
-            circle.show();
           }
         }
       });
@@ -116,31 +118,29 @@ export class HomeComponent implements OnInit {
       let circle = new AMap.Circle({
         map: map,
         center: centerPos,
-        radius: 400,
+        radius: 300,
         fillOpacity: 0.1,
         strokeOpacity: 0,
-        bubble: true
+        bubble: true,
       });
-
-      circle.hide();
     }
 
-    function markPlayFileds(playFileds, SimpleInfoWindow) {
+    function markPlayFileds(playFileds, SimpleInfoWindow, that) {
       playFileds.forEach(playFiled => {
-        let marker = new AMap.Marker({
+
+        let circle = new AMap.Circle({
           map: map,
-          zIndex: 9999999,
-          position: playFiled.position,
-          offset: new AMap.Pixel(-10, -20)
+          extData: playFiled.name,
+          center: playFiled.position,
+          radius: 10,
+          fillOpacity: 0,
+          strokeOpacity: 0,
+          bubble: true,
+          zIndex: 100
         });
 
-        var infoWindow = new SimpleInfoWindow({
-            infoTitle: '<strong>这里是标题</strong>',
-            infoBody: '<p>这里是内容。</p>'
-        });
-
-        AMap.event.addListener(marker, 'click', function() {
-          infoWindow.open(map, marker.getPosition());
+        AMap.event.addListener(circle, 'click', function() {
+          that.router.navigate(['/game', that.user.username, circle.getExtData()]);
         });
       })
     }
@@ -148,11 +148,11 @@ export class HomeComponent implements OnInit {
      AMapUI.loadUI(['overlay/SimpleInfoWindow'], function(SimpleInfoWindow) {
         datas.forEach(data => {
           markCenter(data.center, SimpleInfoWindow);
-          markPlayFileds(data.playFileds, SimpleInfoWindow);
+          markPlayFileds(data.playFileds, SimpleInfoWindow, that);
       });
     })
   }
-};
+}
 
 @Component({
   selector: 'welcome',
