@@ -44,10 +44,6 @@ export class HomeComponent implements OnInit {
     });
 
     map.setLimitBounds(map.getBounds());
-    var marker = new AMap.Marker({
-      position : [113.2644, 23.1291],
-      map : map
-    });
 
     const datas = [{
       position : [113.321503,23.131138],
