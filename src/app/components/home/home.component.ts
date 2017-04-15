@@ -41,7 +41,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(this);
     var that = this;
     var map = new AMap.Map('map-container', {
       resizeEnable: true,

@@ -14,7 +14,7 @@ const User = mongoose.model('User', userSchema);
 
 module.exports = function(app) {
   // 创建 router
-  var router = new Router({prefix: '/user'});
+  var router = new Router({ prefix: '/user' });
 
   // TODO 后端校验
 
@@ -26,6 +26,11 @@ module.exports = function(app) {
       if (ctx.session.username == null || ctx.session.username == undefined) {
         ctx.body = { isOK: false };
       } else {
+        if (ctx.session.count == null || ctx.session.count == undefined)
+          ctx.session.count = 0;
+        else
+          ctx.session.count++;
+        console.log(ctx.session.count);
         var users = await User.find({ username: ctx.session.username });
         // 如果数据库中不包含此用户名，则它为新注册用户
         if (users.length == 0) {
@@ -39,7 +44,7 @@ module.exports = function(app) {
           });
           await user.save();
           ctx.body = {
-            firstLogin: true,
+            firstLogin: ctx.session.count < 6,
             isOK: true,
             username: user.username,
             avatar: user.avatar,
@@ -49,7 +54,7 @@ module.exports = function(app) {
           };
         } else {
           ctx.body = {
-            firstLogin: false,
+            firstLogin: ctx.session.count < 6,
             isOK: true,
             username: users[0].username,
             avatar: users[0].avatar,
