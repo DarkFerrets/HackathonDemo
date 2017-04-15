@@ -74,7 +74,14 @@ export class HomeComponent implements OnInit {
       playFileds: [{
         name: "永旺",
         position: [113.322598,23.120017]
-      }]
+      }, {
+        name: "保利大厦",
+        position: [113.319636,23.118057]
+      }, {
+        name: "广州金融中心",
+        position: [113.32303,23.117912]
+      }
+    ]
     }];
 
     function markCenter(center, SimpleInfoWindow) {
