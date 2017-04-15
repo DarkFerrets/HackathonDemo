@@ -13,6 +13,7 @@ import { BasketService } from '../../services/basket/basket.service';
 export class BasketComponent implements OnInit {
   user: User;
   materials = [];
+  recipes = [];
 
   constructor(private userService: UserService, private router: Router,
               private basketService: BasketService) {
@@ -21,6 +22,7 @@ export class BasketComponent implements OnInit {
         this.user = new User(data.username, data.avatar, data.rank,
                              data.materials, data.dishes);
         this.materials = basketService.getMaterials();
+        this.recipes = basketService.getRecipes();
       } else {
         router.navigate(['/login', 'sign-in']);
       }

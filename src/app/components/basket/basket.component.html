@@ -32,6 +32,18 @@
           </div>
         </div>
       </md-card>
+      <md-card>
+        <md-card-title class="title">菜谱</md-card-title>
+        <div class="recipes">
+          <div class="recipe" *ngFor="let recipe of recipes">
+            <div class="image" [style.background-image]="'url(' + recipe.image + ')'"></div>
+            <div class="info">
+              <div class="header">{{recipe.name}}</div>
+              <div class="requirement">{{recipe.materials}}</div>
+            </div>
+          </div>
+        </div>
+      </md-card>
     </div>
   </div>
   <div fxFlex="10" fxHide.lt-md></div>

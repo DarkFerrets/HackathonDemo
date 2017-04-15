@@ -14,11 +14,23 @@ export class BasketService {
     { name: '黑糖', amount: '两碗', image: '/assets/images/food3.3.jpg' }
   ];
 
+  recipes = [
+    { name: '虾仁拉肠', materials: '虾仁一份、米浆一碗、菜心一根', image: '/assets/images/food1.jpg' },
+    { name: '豉汁凤爪', materials: '凤爪三只、卤料一份', image: '/assets/images/food2.jpg' },
+    { name: '马拉糕', materials: '面粉一碗、鸡蛋一个、黑糖一碗', image: '/assets/images/food3.jpg' },
+    { name: '鸡蛋拉肠', materials: '鸡蛋一份、米浆一碗、菜心一根', image: '/assets/images/food4.jpg' }
+  ]
+
   constructor() {}
 
   // 获取原材料
   getMaterials() {
     return this.materials;
+  }
+
+  // 获取菜谱
+  getRecipes() {
+    return this.recipes;
   }
 
 }
