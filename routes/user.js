@@ -33,12 +33,14 @@ module.exports = function(app) {
           });
           await user.save();
           ctx.body = {
+            firstLogin: true,
             isOK: true,
             username: user.username,
             avatar: user.avatar
           };
         } else {
           ctx.body = {
+            firstLogin: true,
             isOK: true,
             username: users[0].username,
             avatar: users[0].avatar
