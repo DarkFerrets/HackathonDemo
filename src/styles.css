@@ -26,6 +26,12 @@
 .amap-ui-smp-ifwn-content-body {
   padding: 8px !important;
 }
+.amap-copyright {
+  display: none !important;
+}
+.amap-logo {
+  display: none !important;
+}
 
 /* 撑满页面 */
 html {
