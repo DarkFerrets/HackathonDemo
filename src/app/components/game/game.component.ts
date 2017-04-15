@@ -48,7 +48,7 @@ export class GameComponent implements OnInit {
 
   // 显示下一题
   nextGame() {
-    if (this.left == 4) {
+    if (this.left == 0) {
       let dialogRef = this.dialog.open(ResultComponent);
       dialogRef.afterClosed().subscribe( result => {
         this.router.navigate(['/home', this.username]);

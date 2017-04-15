@@ -27,7 +27,7 @@ export class PlaceService {
       position : [113.270966,23.181613],
       infoTplData: {
         title: '白云公园',
-        body: '白云公园站，近白云国际机场旧址中心位置，毗邻风景秀丽的白云山西麓。快去白云山看看吧。'
+        body: '白云公园站，毗邻风景秀丽的白云山西麓。快去白云山看看吧。'
       }
     },
     playFileds: []

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MdDialog } from '@angular/material';
+import { MdDialog, MdDialogRef } from '@angular/material';
 
 import { UserService } from '../../services/user/user.service';
 import { User } from '../../services/user/user';
@@ -67,7 +67,10 @@ export class BasketComponent implements OnInit {
   }
 
   getBonues() {
-    this.dialog.open(BonuesComponent);
+    let dialogRef = this.dialog.open(BonuesComponent);
+    dialogRef.afterClosed().subscribe( result => {
+      this.usedMaterials = this.usedMaterials.slice(0,0)
+    });
   }
 
 }
@@ -78,6 +81,6 @@ export class BasketComponent implements OnInit {
   styleUrls: ['./bonues.component.sass']
 })
 export class BonuesComponent implements OnInit {
-  constructor() {}
+  constructor(public dialogRef: MdDialogRef<BonuesComponent>) {}
   ngOnInit() {}
 }

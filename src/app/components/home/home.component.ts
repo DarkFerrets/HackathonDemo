@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
     var that = this;
     var map = new AMap.Map('map-container', {
       resizeEnable: true,
-      zoom: 11,
+      zoom: 10,
       center: [113.3218412544,23.1298557896]
     });
     map.setFeatures(['bg', 'point', 'building']);
@@ -61,22 +61,17 @@ export class HomeComponent implements OnInit {
         map: map,
         zIndex: 9999999,
         position: center.position,
-        animation: 'AMAP_ANIMATION_DROP',
-        icon: new AMap.Icon({
-            size: new AMap.Size(40, 50),  //图标大小
-            image: "../../assets/images/lock.png",
-            imageOffset: new AMap.Pixel(0, -60)
-        })
+        animation: 'AMAP_ANIMATION_DROP'
       });
 
       let centerPos = new AMap.LngLat(center.position[0], center.position[1]);
 
       let infoWindow = new SimpleInfoWindow({
         infoTitle: '<strong><%- title %></strong>',
-        infoBody: '<div class="my-desc">' +
+        infoBody: '<p class="my-desc">' +
             //<%- html编码后插入
             '<%- body %>' +
-            '</div>',
+            '</p>',
           infoTplData: center.infoTplData,
 
           //基点指向marker的头部位置
