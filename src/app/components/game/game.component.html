@@ -26,7 +26,12 @@
       <input mdInput placeholder="你的答案" [(ngModel)]="guess">
     </md-input-container>
     <div class="button-container">
-      <button md-button class="submit-button" (click)="checkRiddle()">提 交</button>
+      <button md-button class="submit-button" (click)="checkRiddle()" *ngIf="left == 0">提 交</button>
+      <button md-button class="submit-button" (click)="checkRiddle()" *ngIf="left != 0">下一题</button>
     </div>
+  </md-card>
+  <!-- 手势题 -->
+  <md-card class="question" *ngIf="game && game.type == 'gesture'">
+    123
   </md-card>
 </div>
