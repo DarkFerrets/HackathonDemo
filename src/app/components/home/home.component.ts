@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(AMap);
     var map = new AMap.Map('map-container', {
       resizeEnable: true,
       zoom: 10,
@@ -37,9 +36,9 @@ export class HomeComponent implements OnInit {
       map.addControl(new AMap.ToolBar());
     });
     var marker = new AMap.Marker({
-        position : [113.2644, 23.1291],
-        map : map
-});
+      position : [113.2644, 23.1291],
+      map : map
+    });
   }
 
 }
