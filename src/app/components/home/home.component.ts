@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     var map = new AMap.Map('map-container', {
       resizeEnable: true,
       zoom: 10,
-      center: [116.480983, 40.0958]
+      center: [113.2644, 23.1291]
     });
   }
 
