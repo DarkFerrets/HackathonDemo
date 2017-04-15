@@ -21,7 +21,8 @@ export class GameComponent implements OnInit {
   selected: number;
   // 用户的解谜题答案
   guess: string;
-  answer: string;
+  gestures = ['paper', 'stone', 'scissor'];
+  selectedGesture: string;
 
   // 剩余题量
   left: number = 5;
@@ -39,11 +40,20 @@ export class GameComponent implements OnInit {
         let randomNumber = Math.floor(Math.random() * this.games.length);
         this.game = this.games[randomNumber];
         this.games.splice(randomNumber, 1);
+        // 切换手势图片
+        let i = 0;
+        let that = this;
+        setInterval(function() {
+          if (that.game && that.game.type == 'gesture') {
+            i++;
+            that.selectedGesture = that.gestures[i % 3];
+            if (i > 10000) i = 0;
+          }
+        }, 300);
       } else {
         router.navigate(['/login', 'sign-in']);
       }
     });
-    // TODO 切换图片
   }
 
   ngOnInit() {}
@@ -80,7 +90,6 @@ export class GameComponent implements OnInit {
   }
 
   checkGesture() {
-
   }
 
 }
