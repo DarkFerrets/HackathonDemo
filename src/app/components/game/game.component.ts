@@ -49,7 +49,7 @@ export class GameComponent implements OnInit {
             that.selectedGesture = that.gestures[i % 3];
             if (i > 10000) i = 0;
           }
-        }, 300);
+        }, 200);
       } else {
         router.navigate(['/login', 'sign-in']);
       }
