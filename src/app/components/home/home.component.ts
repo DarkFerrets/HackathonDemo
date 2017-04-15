@@ -20,10 +20,15 @@ export class HomeComponent implements OnInit {
   constructor(public userService: UserService, public router: Router, public dialog: MdDialog) {
     userService.getUser().subscribe((data) => {
       if (data.isOK) {
+<<<<<<< HEAD
         this.user = new User(data.username, data.avatar);
         if (data.firstLogin) {
           this.dialog.open(WelcomeComponent);
         }
+=======
+        this.user = new User(data.username, data.avatar, data.rank,
+                             data.materials, data.dishes);
+>>>>>>> origin/master
       } else {
         router.navigate(['/login', 'sign-in']);
       }
@@ -42,8 +47,13 @@ export class HomeComponent implements OnInit {
     });
     map.setLimitBounds(map.getBounds());
     var marker = new AMap.Marker({
+<<<<<<< HEAD
         position : [113.2644, 23.1291],
         map : map
+=======
+      position : [113.2644, 23.1291],
+      map : map
+>>>>>>> origin/master
     });
   }
 
