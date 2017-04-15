@@ -4,10 +4,12 @@ import { Router } from '@angular/router';
 import { UserService } from '../../services/user/user.service';
 import { User } from '../../services/user/user';
 
+declare var AMap: any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.sass']
+  styleUrls: ['./home.component.sass'],
 })
 export class HomeComponent implements OnInit {
   errorMessage: string = '';
@@ -24,6 +26,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(AMap);
+    var map = new AMap.Map('map-container', {
+      resizeEnable: true,
+      zoom: 10,
+      center: [116.480983, 40.0958]
+    });
   }
 
 }
