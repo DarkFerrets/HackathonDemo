@@ -1,28 +1,14 @@
 <div class="welcome-layout">
-  <div class='title'>嘿，新玩家</div>
-  <div class='sub-title'>快点开启奇妙的广州美食之旅吧！</div>
-  <!-- <div class='img-container'>
-    <img class='intro-img' src="../../assets/images/intro.jpg">
-  </div> -->
+  <div class="title">嘿，新玩家</div>
+  <div class="sub-title">快点开启奇妙的广州美食之旅吧！</div>
+  <div class="intro-image"></div>
   <div class="intro" fxLayout="row" >
-    <div class='intro1' fxFlex="22">寻找线索</div>
-    <div class='intro2' fxFlex="20">完成任务</div>
-    <div class='intro3' fxFlex="16">获得食材</div>
-    <div class='intro4' fxFlex="20">合成美食</div>
-    <div class='intro5' fxFlex="22">赢取奖励</div>
+    <div class="intro1" fxFlex="22">寻找线索</div>
+    <div class="intro2" fxFlex="20">完成任务</div>
+    <div class="intro3" fxFlex="16">获得食材</div>
+    <div class="intro4" fxFlex="20">合成美食</div>
+    <div class="intro5" fxFlex="22">赢取奖励</div>
   </div>
-  <md-slider
-       class="slider"
-       [disabled]="false"
-       [invert]="false"
-       [max]="100"
-       [min]="0"
-       [step]="25"
-       [thumb-label]="false"
-       [tick-interval]="25"
-       [value]="25"
-       [vertical]="false">
-   </md-slider>
   <div class="start">
     <button md-raised-button (click)= 'dialogRef.close("gotoBasket")' class='goto-basket-button'>立即开始游戏</button>
   </div>
