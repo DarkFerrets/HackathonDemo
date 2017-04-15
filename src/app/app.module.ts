@@ -19,6 +19,7 @@ import { BasketComponent } from './components/basket/basket.component';
 // 引入 services
 import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
+import { BasketService } from './services/basket/basket.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { UserService } from './services/user/user.service';
   ],
   providers: [
     AuthService,
-    UserService
+    UserService,
+    BasketService
   ],
   bootstrap: [AppComponent]
 })

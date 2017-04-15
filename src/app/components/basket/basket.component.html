@@ -24,6 +24,13 @@
     <div fxFlex.gt-sm="70">
       <md-card>
         <md-card-title class="title">我的原材料</md-card-title>
+        <div class="materials-container">
+          <div class="material" *ngFor="let material of materials">
+            <div class="image" [style.background-image]="'url(' + material.image + ')'"></div>
+            <span class="name">{{material.name}}</span>
+            <span class="amount">{{material.amount}}</span>
+          </div>
+        </div>
       </md-card>
     </div>
   </div>
