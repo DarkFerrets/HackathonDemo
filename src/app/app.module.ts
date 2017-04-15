@@ -25,6 +25,7 @@ import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
 import { BasketService } from './services/basket/basket.service';
 import { GameService } from './services/game/game.service';
+import { PlaceService } from './services/place/place.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { GameService } from './services/game/game.service';
     AuthService,
     UserService,
     BasketService,
-    GameService
+    GameService,
+    PlaceService
   ],
   bootstrap: [AppComponent]
 })
