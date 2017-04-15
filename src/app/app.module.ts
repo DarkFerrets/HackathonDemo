@@ -45,7 +45,8 @@ import { BasketService } from './services/basket/basket.service';
     RoutingModule
   ],
   entryComponents: [
-    WelcomeComponent
+    WelcomeComponent,
+    BonuesComponent
   ],
   providers: [
     AuthService,

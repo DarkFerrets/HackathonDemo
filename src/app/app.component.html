@@ -5,11 +5,15 @@
       <div class="toolbar-layout" fxLayout="row">
         <div fxFlex="10" fxHide.xs></div>
         <div fxFlex.gt-xs="80" class="toolbar-content" fxLayout="row">
-          <div class="logo"></div>
+          <div class="logo" (click)="gotoHome()"></div>
           <div class="name">Hackathon Demo</div>
           <div class="user" fxFlex *ngIf="user">
             <div class="user-avatar" [mdMenuTriggerFor]="userMenu" [style.background-image]="'url(' + user.avatar + ')'"></div>
             <md-menu #userMenu="mdMenu">
+              <button md-menu-item (click)="gotoHome()">
+                <md-icon>home</md-icon>
+                <span>进入主页</span>
+              </button>
               <button md-menu-item (click)="checkBasket()">
                 <md-icon>shopping_basket</md-icon>
                 <span>查看菜篮</span>

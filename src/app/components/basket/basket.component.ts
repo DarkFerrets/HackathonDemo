@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MdDialog } from '@angular/material';
 
 import { UserService } from '../../services/user/user.service';
 import { User } from '../../services/user/user';
@@ -20,7 +21,7 @@ export class BasketComponent implements OnInit {
   usedMaterials = [];
 
   constructor(private userService: UserService, private router: Router,
-              private basketService: BasketService) {
+              private basketService: BasketService, public dialog: MdDialog) {
     // 没有授权则回到登录页
     userService.getUser().subscribe((data) => {
       if (data.isOK) {
@@ -60,6 +61,10 @@ export class BasketComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  getBonues() {
+    this.dialog.open(BonuesComponent);
   }
 
 }

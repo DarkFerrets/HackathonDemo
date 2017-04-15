@@ -49,4 +49,8 @@ export class AppComponent {
   checkBasket() {
     this.router.navigate(['/basket', this.user.username]);
   }
+
+  gotoHome() {
+    this.router.navigate(['/home', this.user.username]);
+  }
 }
