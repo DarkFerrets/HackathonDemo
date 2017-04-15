@@ -33,4 +33,10 @@ export class BasketService {
     return this.recipes;
   }
 
+  deleteMaterial(name) {
+    this.materials= this.materials.filter(function(element) {
+      return element[name] != name;
+    })
+  }
+
 }

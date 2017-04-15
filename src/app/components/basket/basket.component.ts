@@ -52,10 +52,14 @@ export class BasketComponent implements OnInit {
   // 添加原料到合成台
   addMaterial(material) {
     if (this.usedMaterials.length < 9) {
-      if (material.number - 1 >= 0)
+      if (material.number - 1 > 0)
         material.number--;
-      else
-        return;
+      else {
+        this.materials = this.materials.filter(function(element) {
+          return element['name'] != material.name;
+        });
+        console.log(this.materials);
+      }
       this.usedMaterials.push(material);
     }
   }
