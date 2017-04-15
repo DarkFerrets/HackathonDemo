@@ -20,15 +20,24 @@
           </div>
         </div>
       </md-card>
+      <md-card>
+        <md-card-title class="title">合成台</md-card-title>
+        <div id="crafting-table">
+          <div class="crafting-item" *ngFor="let material of usedMaterials" [style.background-image]="'url(' + material.image + ')'"></div>
+        </div>
+        <div class="submit">
+          <button md-raised-button>合成！</button>
+        </div>
+      </md-card>
     </div>
     <div fxFlex.gt-sm="70">
       <md-card>
         <md-card-title class="title">我的原材料</md-card-title>
         <div class="materials-container">
           <div class="material" *ngFor="let material of materials">
-            <div class="image" [style.background-image]="'url(' + material.image + ')'"></div>
+            <div class="image" [style.background-image]="'url(' + material.image + ')'" (click)="addMaterial(material)"></div>
             <span class="name">{{material.name}}</span>
-            <span class="amount">{{material.amount}}</span>
+            <span class="amount">{{material.number}}{{material.unit}}</span>
           </div>
         </div>
       </md-card>

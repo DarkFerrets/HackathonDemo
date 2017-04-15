@@ -34,7 +34,7 @@ module.exports = function(app) {
             username: ctx.session.username,
             avatar: '/assets/images/default-avatar.jpg',
             rank: '小试牛刀',
-            materials: 7,
+            materials: 8,
             dishes: 3
           });
           await user.save();
