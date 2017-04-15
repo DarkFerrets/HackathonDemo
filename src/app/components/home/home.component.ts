@@ -18,7 +18,8 @@ export class HomeComponent implements OnInit {
   user: User;
   firstLogin: boolean;
 
-  constructor(public userService: UserService, public router: Router, public dialog: MdDialog) {
+  constructor(public userService: UserService, public router: Router,
+              public dialog: MdDialog) {
     userService.getUser().subscribe((data) => {
       if (data.isOK) {
         this.user = new User(data.username, data.avatar, data.rank,
@@ -121,6 +122,17 @@ export class HomeComponent implements OnInit {
   styleUrls: ['./welcome.component.sass']
 })
 export class WelcomeComponent implements OnInit {
-  constructor() {}
+  constructor(public userService: UserService, public router: Router) {}
+
   ngOnInit() {}
+
+  gotoBasket() {
+    this.userService.getUser().subscribe((data) => {
+      if (data.isOK) {
+        this.router.navigate(['/basket', data.username]);
+      } else {
+        this.router.navigate(['/login', 'sign-in']);
+      }
+    });
+  }
 }
