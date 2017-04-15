@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MdDialog } from '@angular/material';
+import { MdDialog, MdDialogRef } from '@angular/material';
 
 import { UserService } from '../../services/user/user.service';
 import { User } from '../../services/user/user';
@@ -25,7 +25,12 @@ export class HomeComponent implements OnInit {
         this.user = new User(data.username, data.avatar, data.rank,
                              data.materials, data.dishes);
         if (data.firstLogin) {
-          this.dialog.open(WelcomeComponent);
+          let dialogRef = this.dialog.open(WelcomeComponent);
+          dialogRef.afterClosed().subscribe(result => {
+            if(result == "gotoBasket") {
+              this.router.navigate(['/basket', data.username]);
+            }
+          });
         }
       } else {
         router.navigate(['/login', 'sign-in']);
@@ -144,9 +149,9 @@ export class HomeComponent implements OnInit {
         datas.forEach(data => {
           markCenter(data.center, SimpleInfoWindow);
           markPlayFileds(data.playFileds, SimpleInfoWindow);
-        });
-      })
-    }
+      });
+    })
+  }
 };
 
 @Component({
@@ -155,17 +160,7 @@ export class HomeComponent implements OnInit {
   styleUrls: ['./welcome.component.sass']
 })
 export class WelcomeComponent implements OnInit {
-  constructor(public userService: UserService, public router: Router) {}
+  constructor(public dialogRef: MdDialogRef<WelcomeComponent>) {}
 
   ngOnInit() {}
-
-  gotoBasket() {
-    this.userService.getUser().subscribe((data) => {
-      if (data.isOK) {
-        this.router.navigate(['/basket', data.username]);
-      } else {
-        this.router.navigate(['/login', 'sign-in']);
-      }
-    });
-  }
 }
