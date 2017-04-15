@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MdDialog, MdDialogRef } from '@angular/material';
 
 import { UserService } from '../../services/user/user.service';
 import { GameService } from '../../services/game/game.service';
@@ -14,6 +15,7 @@ export class GameComponent implements OnInit {
   games = [];
   // 正在被显示的游戏
   game;
+  username = "";
 
   // 用户选择的选择题答案
   selected: number;
@@ -26,12 +28,13 @@ export class GameComponent implements OnInit {
   correct: number = 0;
 
   constructor(private userService: UserService, private router: Router,
-              private gameService: GameService) {
+              private gameService: GameService, public dialog: MdDialog) {
     // 没有授权则回到登录页
     userService.getUser().subscribe((data) => {
       if (data.isOK) {
         // 随机选出一道题
         this.games = gameService.getGames();
+        this.username = data.username;
         let randomNumber = Math.floor(Math.random() * this.games.length);
         this.game = this.games[randomNumber];
         this.games.splice(randomNumber, 1);
@@ -45,6 +48,12 @@ export class GameComponent implements OnInit {
 
   // 显示下一题
   nextGame() {
+    if (this.left == 4) {
+      let dialogRef = this.dialog.open(ResultComponent);
+      dialogRef.afterClosed().subscribe( result => {
+        this.router.navigate(['/home', this.username]);
+      });
+    }
     let randomNumber = Math.floor(Math.random() * this.games.length);
     this.game = this.games[randomNumber];
     this.games.splice(randomNumber, 1);
@@ -68,4 +77,15 @@ export class GameComponent implements OnInit {
     this.nextGame();
   }
 
+}
+
+@Component({
+  selector: 'result',
+  templateUrl: './result.component.html',
+  styleUrls: ['./result.component.sass']
+})
+export class ResultComponent implements OnInit {
+  constructor(public dialogRef: MdDialogRef<ResultComponent>) {}
+
+  ngOnInit() {}
 }

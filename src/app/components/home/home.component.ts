@@ -59,8 +59,7 @@ export class HomeComponent implements OnInit {
         position : [113.321503,23.131138],
         infoTplData: {
           title: '体育西',
-          img: '<img src="//webapi.amap.com/theme/v1.3/autonavi.png" />',
-          body: '<---------内容--------->'
+          body: '体育西是广州最繁华的区域'
         }
       },
       playFileds: []
@@ -69,8 +68,7 @@ export class HomeComponent implements OnInit {
         position : [113.321206,23.119293],
         infoTplData: {
           title: '珠江新城',
-          img: '<img src="//webapi.amap.com/theme/v1.3/autonavi.png" />',
-          body: '<---------内容--------->'
+          body: '珠江新城是广州最繁华的区域'
         }
       },
       playFileds: [{
@@ -92,8 +90,6 @@ export class HomeComponent implements OnInit {
       let infoWindow = new SimpleInfoWindow({
         infoTitle: '<strong><%- title %></strong>',
         infoBody: '<p class="my-desc">' +
-            //<%= 原值插入 ..
-            '<%= img %>' +
             //<%- html编码后插入
             '<%- body %>' +
             '</p>',
@@ -106,6 +102,7 @@ export class HomeComponent implements OnInit {
       AMap.event.addListener(marker, 'click', function() {
         if (map.getZoom() < 18) {
           map.setZoomAndCenter(18, centerPos);
+          infoWindow.open(map, marker.getPosition());
         } else {
           if (infoWindow.getIsOpen()) {
             infoWindow.close();

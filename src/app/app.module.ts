@@ -18,6 +18,7 @@ import { WelcomeComponent } from './components/home/home.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { BonuesComponent } from './components/basket/basket.component';
 import { GameComponent } from './components/game/game.component';
+import { ResultComponent } from './components/game/game.component';
 
 // 引入 services
 import { AuthService } from './services/auth/auth.service';
@@ -33,7 +34,8 @@ import { GameService } from './services/game/game.service';
     WelcomeComponent,
     BasketComponent,
     BonuesComponent,
-    GameComponent
+    GameComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import { GameService } from './services/game/game.service';
   ],
   entryComponents: [
     WelcomeComponent,
-    BonuesComponent
+    BonuesComponent,
+    ResultComponent
   ],
   providers: [
     AuthService,
