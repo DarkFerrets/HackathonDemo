@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
                 '</p>',
              infoTplData: data.infoTplData,
 
-             //基点指向marker的头部位置
+            // 基点指向marker的头部位置
             offset: new AMap.Pixel(0, -31)
           });
 
