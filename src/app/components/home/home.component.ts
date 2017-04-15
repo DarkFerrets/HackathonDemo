@@ -47,70 +47,103 @@ export class HomeComponent implements OnInit {
     map.setLimitBounds(map.getBounds());
 
     const datas = [{
-      position : [113.321503,23.131138],
-      infoTplData: {
-        title: '体育西',
-        img: '<img src="//webapi.amap.com/theme/v1.3/autonavi.png" />',
-        body: '<---------内容--------->'
-      }
+      center: {
+        position : [113.321503,23.131138],
+        infoTplData: {
+          title: '体育西',
+          img: '<img src="//webapi.amap.com/theme/v1.3/autonavi.png" />',
+          body: '<---------内容--------->'
+        }
+      },
+      playFileds: []
     }, {
-      position : [113.321206,23.119293],
-      infoTplData: {
-        title: '珠江新城',
-        img: '<img src="//webapi.amap.com/theme/v1.3/autonavi.png" />',
-        body: '<---------内容--------->'
-      }
+      center: {
+        position : [113.321206,23.119293],
+        infoTplData: {
+          title: '珠江新城',
+          img: '<img src="//webapi.amap.com/theme/v1.3/autonavi.png" />',
+          body: '<---------内容--------->'
+        }
+      },
+      playFileds: [{
+        position: [113.322598,23.120017]
+      }]
     }];
+
+    function markCenter(center, SimpleInfoWindow) {
+      let marker = new AMap.Marker({
+        map: map,
+        zIndex: 9999999,
+        position: center.position,
+        animation: 'AMAP_ANIMATION_DROP'
+      });
+
+      let centerPos = new AMap.LngLat(center.position[0], center.position[1]);
+
+      let infoWindow = new SimpleInfoWindow({
+        infoTitle: '<strong><%- title %></strong>',
+        infoBody: '<p class="my-desc">' +
+            //<%= 原值插入 ..
+            '<%= img %>' +
+            //<%- html编码后插入
+            '<%- body %>' +
+            '</p>',
+          infoTplData: center.infoTplData,
+
+          //基点指向marker的头部位置
+        offset: new AMap.Pixel(0, -31)
+      });
+
+      AMap.event.addListener(marker, 'click', function() {
+        if (map.getZoom() < 18) {
+          map.setZoomAndCenter(18, centerPos);
+        } else {
+          if (infoWindow.getIsOpen()) {
+            circle.hide();
+            infoWindow.close();
+          } else {
+            infoWindow.open(map, marker.getPosition());
+            circle.show();
+          }
+        }
+      });
+
+      let circle = new AMap.Circle({
+        map: map,
+        center: centerPos,
+        radius: 400,
+        fillOpacity: 0.1,
+        strokeOpacity: 0,
+        bubble: true
+      });
+
+      circle.hide();
+    }
+
+    function markPlayFileds(playFileds, SimpleInfoWindow) {
+      playFileds.forEach(playFiled => {
+        let marker = new AMap.Marker({
+          map: map,
+          zIndex: 9999999,
+          position: playFiled.position,
+          offset: new AMap.Pixel(-10, -20)
+        });
+
+        var infoWindow = new SimpleInfoWindow({
+            infoTitle: '<strong>这里是标题</strong>',
+            infoBody: '<p>这里是内容。</p>'
+        });
+
+        AMap.event.addListener(marker, 'click', function() {
+          infoWindow.open(map, marker.getPosition());
+        });
+      })
+    }
 
      AMapUI.loadUI(['overlay/SimpleInfoWindow'], function(SimpleInfoWindow) {
         datas.forEach(data => {
-          let marker = new AMap.Marker({
-            map: map,
-            zIndex: 9999999,
-            position: data.position,
-            animation: 'AMAP_ANIMATION_DROP'
-          });
-
-          let center = new AMap.LngLat(data.position[0], data.position[1]);
-
-          let infoWindow = new SimpleInfoWindow({
-            infoTitle: '<strong><%- title %></strong>',
-            infoBody: '<p class="my-desc">' +
-                //<%= 原值插入 ..
-                '<%= img %>' +
-                //<%- html编码后插入
-                '<%- body %>' +
-                '</p>',
-             infoTplData: data.infoTplData,
-
-             //基点指向marker的头部位置
-            offset: new AMap.Pixel(0, -31)
-          });
-
-          AMap.event.addListener(marker, 'click', function() {
-            if (map.getZoom() < 18) {
-              map.setZoomAndCenter(18, center);
-            } else {
-              if (infoWindow.getIsOpen()) {
-                circle.hide();
-                infoWindow.close();
-              } else {
-                infoWindow.open(map, marker.getPosition());
-                circle.show();
-              }
-            }
-          });
-
-          let circle = new AMap.Circle({
-            map: map,
-            center: center,
-            radius: 400,
-            fillOpacity: 0.1,
-            strokeOpacity: 0,
-            bubble: true
-          });
-
-          circle.hide();
+          markCenter(data.center, SimpleInfoWindow);
+          markPlayFileds(data.playFileds, SimpleInfoWindow);
         });
       })
     }
