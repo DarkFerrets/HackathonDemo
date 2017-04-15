@@ -21,6 +21,7 @@ export class GameComponent implements OnInit {
   selected: number;
   // 用户的解谜题答案
   guess: string;
+  answer: string;
 
   // 剩余题量
   left: number = 5;
@@ -42,6 +43,7 @@ export class GameComponent implements OnInit {
         router.navigate(['/login', 'sign-in']);
       }
     });
+    // TODO 切换图片
   }
 
   ngOnInit() {}
@@ -75,6 +77,10 @@ export class GameComponent implements OnInit {
     if (this.guess == this.game.answer) this.correct++;
     this.left--;
     this.nextGame();
+  }
+
+  checkGesture() {
+
   }
 
 }
