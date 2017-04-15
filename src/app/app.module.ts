@@ -17,12 +17,13 @@ import { HomeComponent } from './components/home/home.component';
 import { WelcomeComponent } from './components/home/home.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { BonuesComponent } from './components/basket/basket.component';
+import { GameComponent } from './components/game/game.component';
 
 // 引入 services
 import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
 import { BasketService } from './services/basket/basket.service';
-import { GameComponent } from './components/game/game.component';
+import { GameService } from './services/game/game.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { GameComponent } from './components/game/game.component';
   providers: [
     AuthService,
     UserService,
-    BasketService
+    BasketService,
+    GameService
   ],
   bootstrap: [AppComponent]
 })

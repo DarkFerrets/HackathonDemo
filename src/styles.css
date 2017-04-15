@@ -1,6 +1,14 @@
 /* 预设 Material Design 样式 */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+/* 对 Material Design 的矫正 */
+.mat-radio-outer-circle {
+  top: 2px !important;
+}
+.mat-radio-inner-circle {
+  top: 2px !important;
+}
+
 /* 矫正高德地图弹窗的样式 */
 .amap-ui-smp-ifwn-content-body {
   box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12) !important;

@@ -1,12 +1,32 @@
 <div class="game-layout">
+  <!-- 进度 -->
+  <md-card class="progress">
+    <md-card-title>总体进度 {{5 - left}} / 5</md-card-title>
+    <section>
+      <md-progress-bar [value]="(5 - left) * 20"></md-progress-bar>
+    </section>
+  </md-card>
   <!-- 选择题 -->
-  <md-card class="question">
-    <md-card-title>你好呀</md-card-title>
-    <md-radio-group>
-      <md-radio-button value="1">Option 1</md-radio-button><br>
-      <md-radio-button value="2">Option 2</md-radio-button><br>
-      <md-radio-button value="3">Option 2</md-radio-button><br>
-      <md-radio-button value="4">Option 2</md-radio-button>
+  <md-card class="question" *ngIf="game && game.type == 'multipleChoice'">
+    <md-card-title>{{game.question}}</md-card-title>
+    <md-radio-group [(ngModel)]="selected">
+      <md-radio-button value="1">{{game.options[0]}}</md-radio-button><br>
+      <md-radio-button value="2">{{game.options[1]}}</md-radio-button><br>
+      <md-radio-button value="3">{{game.options[2]}}</md-radio-button><br>
+      <md-radio-button value="4">{{game.options[3]}}</md-radio-button>
     </md-radio-group>
+    <div class="button-container">
+      <button md-button class="submit-button" (click)="checkMultiple()">提 交</button>
+    </div>
+  </md-card>
+  <!-- 解谜题 -->
+  <md-card class="question" *ngIf="game && game.type == 'riddle'">
+    <md-card-title>{{game.question}}</md-card-title>
+    <md-input-container>
+      <input mdInput placeholder="你的答案" [(ngModel)]="guess">
+    </md-input-container>
+    <div class="button-container">
+      <button md-button class="submit-button" (click)="checkRiddle()">提 交</button>
+    </div>
   </md-card>
 </div>
