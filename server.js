@@ -7,7 +7,7 @@ const json = require('koa-json');
 const mongoose = require('mongoose');
 
 // 设置数据库
-const databaseUrl = 'mongodb://localhost:27017/scrat';
+const databaseUrl = 'mongodb://lrrLoveSqq:8S1h6U6R3eN@localhost:5050/hackathon';
 mongoose.connect(databaseUrl);
 
 var db = mongoose.connection;

@@ -22,7 +22,7 @@ export class GameComponent implements OnInit {
   // 用户选择的选择题答案
   selected: number = null;
   // 用户的解谜题答案
-  guess: string;
+  guess: string = '';
   gestures = ['paper', 'stone', 'scissor'];
   selectedGesture: string;
 

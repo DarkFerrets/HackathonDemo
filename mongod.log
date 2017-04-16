@@ -1,0 +1,191 @@
+2017-04-16T10:27:04.945+0800 I CONTROL  [initandlisten] MongoDB starting : pid=5478 port=5050 dbpath=/data/db 64-bit host=Liu-Ren-de-MacBook-Pro.local
+2017-04-16T10:27:04.945+0800 I CONTROL  [initandlisten] db version v3.2.0
+2017-04-16T10:27:04.945+0800 I CONTROL  [initandlisten] git version: 45d947729a0315accb6d4f15a6b06be6d9c19fe7
+2017-04-16T10:27:04.945+0800 I CONTROL  [initandlisten] allocator: system
+2017-04-16T10:27:04.945+0800 I CONTROL  [initandlisten] modules: none
+2017-04-16T10:27:04.945+0800 I CONTROL  [initandlisten] build environment:
+2017-04-16T10:27:04.945+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-04-16T10:27:04.945+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-04-16T10:27:04.945+0800 I CONTROL  [initandlisten] options: { config: "mongod.conf", net: { bindIp: "127.0.0.1", http: { enabled: true }, port: 5050 }, processManagement: { pidFilePath: "mongod.pid" }, security: { authorization: "enabled" }, systemLog: { destination: "file", logAppend: true, path: "mongod.log" } }
+2017-04-16T10:27:04.949+0800 I STORAGE  [initandlisten] exception in initAndListen: 29 Data directory /data/db not found., terminating
+2017-04-16T10:27:04.949+0800 I CONTROL  [initandlisten] dbexit:  rc: 100
+2017-04-16T10:27:35.166+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-04-16T10:27:35.182+0800 I CONTROL  [initandlisten] MongoDB starting : pid=5491 port=5050 dbpath=data 64-bit host=Liu-Ren-de-MacBook-Pro.local
+2017-04-16T10:27:35.182+0800 I CONTROL  [initandlisten] db version v3.2.0
+2017-04-16T10:27:35.182+0800 I CONTROL  [initandlisten] git version: 45d947729a0315accb6d4f15a6b06be6d9c19fe7
+2017-04-16T10:27:35.182+0800 I CONTROL  [initandlisten] allocator: system
+2017-04-16T10:27:35.182+0800 I CONTROL  [initandlisten] modules: none
+2017-04-16T10:27:35.182+0800 I CONTROL  [initandlisten] build environment:
+2017-04-16T10:27:35.182+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-04-16T10:27:35.182+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-04-16T10:27:35.182+0800 I CONTROL  [initandlisten] options: { config: "mongod.conf", net: { bindIp: "127.0.0.1", http: { enabled: true }, port: 5050 }, processManagement: { pidFilePath: "mongod.pid" }, security: { authorization: "enabled" }, storage: { dbPath: "data" }, systemLog: { destination: "file", logAppend: true, path: "mongod.log" } }
+2017-04-16T10:27:35.182+0800 I -        [initandlisten] Detected data files in data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-04-16T10:27:35.183+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=4G,session_max=20000,eviction=(threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-04-16T10:27:35.971+0800 I CONTROL  [initandlisten] 
+2017-04-16T10:27:35.971+0800 I CONTROL  [initandlisten] ** WARNING: The server is started with the web server interface and access control.
+2017-04-16T10:27:35.971+0800 I CONTROL  [initandlisten] **          The web interfaces (rest, httpinterface and/or jsonp) are insecure 
+2017-04-16T10:27:35.971+0800 I CONTROL  [initandlisten] **          and should be disabled unless required for backward compatibility.
+2017-04-16T10:27:35.971+0800 I CONTROL  [initandlisten] 
+2017-04-16T10:27:35.971+0800 I CONTROL  [initandlisten] 
+2017-04-16T10:27:35.971+0800 I CONTROL  [initandlisten] ** WARNING: soft rlimits too low. Number of files is 256, should be at least 1000
+2017-04-16T10:27:35.973+0800 I NETWORK  [websvr] admin web console waiting for connections on port 6050
+2017-04-16T10:27:35.974+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'data/diagnostic.data'
+2017-04-16T10:27:35.974+0800 I NETWORK  [HostnameCanonicalizationWorker] Starting hostname canonicalization worker
+2017-04-16T10:27:35.976+0800 I NETWORK  [initandlisten] waiting for connections on port 5050
+2017-04-16T10:27:40.980+0800 W NETWORK  [HostnameCanonicalizationWorker] Failed to obtain address information for hostname Liu-Ren-de-MacBook-Pro.local: nodename nor servname provided, or not known
+2017-04-16T10:28:04.771+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64258 #1 (1 connection now open)
+2017-04-16T10:28:04.883+0800 I ACCESS   [conn1] Successfully authenticated as principal lrrLoveSqq on hackathon
+2017-04-16T10:28:10.572+0800 I ACCESS   [conn1] Unauthorized not authorized on hackathon to execute command { find: "users", filter: { username: "liuren" }, projection: {} }
+2017-04-16T10:28:10.583+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64301 #2 (2 connections now open)
+2017-04-16T10:28:10.660+0800 I ACCESS   [conn2] Successfully authenticated as principal lrrLoveSqq on hackathon
+2017-04-16T10:28:10.660+0800 I ACCESS   [conn1] Unauthorized not authorized on hackathon to execute command { find: "users", filter: { username: "liuren" }, projection: {} }
+2017-04-16T10:28:10.660+0800 I ACCESS   [conn2] Unauthorized not authorized on hackathon to execute command { find: "users", filter: { username: "liuren" }, projection: {} }
+2017-04-16T10:28:10.662+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64302 #3 (3 connections now open)
+2017-04-16T10:28:10.732+0800 I ACCESS   [conn3] Successfully authenticated as principal lrrLoveSqq on hackathon
+2017-04-16T10:28:10.732+0800 I ACCESS   [conn2] Unauthorized not authorized on hackathon to execute command { find: "users", filter: { username: "liuren" }, projection: {} }
+2017-04-16T10:28:15.717+0800 I ACCESS   [conn1] Unauthorized not authorized on hackathon to execute command { find: "users", filter: { username: "liuren" }, projection: {} }
+2017-04-16T10:28:15.733+0800 I ACCESS   [conn2] Unauthorized not authorized on hackathon to execute command { find: "users", filter: { username: "liuren" }, projection: {} }
+2017-04-16T10:28:15.773+0800 I ACCESS   [conn3] Unauthorized not authorized on hackathon to execute command { find: "users", filter: { username: "liuren" }, projection: {} }
+2017-04-16T10:28:15.786+0800 I ACCESS   [conn1] Unauthorized not authorized on hackathon to execute command { find: "users", filter: { username: "liuren" }, projection: {} }
+2017-04-16T10:28:15.790+0800 I ACCESS   [conn2] Unauthorized not authorized on hackathon to execute command { find: "users", filter: { username: "liuren" }, projection: {} }
+2017-04-16T10:28:15.795+0800 I ACCESS   [conn3] Unauthorized not authorized on hackathon to execute command { find: "users", filter: { username: "liuren" }, projection: {} }
+2017-04-16T10:28:15.851+0800 I ACCESS   [conn1] Unauthorized not authorized on hackathon to execute command { find: "users", filter: { username: "liuren" }, projection: {} }
+2017-04-16T10:29:01.336+0800 I NETWORK  [conn3] end connection 127.0.0.1:64302 (2 connections now open)
+2017-04-16T10:29:01.336+0800 I NETWORK  [conn2] end connection 127.0.0.1:64301 (2 connections now open)
+2017-04-16T10:29:01.336+0800 I NETWORK  [conn1] end connection 127.0.0.1:64258 (2 connections now open)
+2017-04-16T10:29:04.650+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64358 #4 (1 connection now open)
+2017-04-16T10:29:04.769+0800 I ACCESS   [conn4] Successfully authenticated as principal lrrLoveSqq on hackathon
+2017-04-16T10:29:15.160+0800 I ACCESS   [conn4] Unauthorized not authorized on hackathon to execute command { find: "passports", filter: { username: "liuren" }, projection: {} }
+2017-04-16T10:29:28.527+0800 E STORAGE  [thread1] WiredTiger (2) [1492309768:527324][5491:0x70000547d000], log-server: data/journal: opendir: No such file or directory
+2017-04-16T10:29:28.527+0800 E STORAGE  [thread1] WiredTiger (2) [1492309768:527411][5491:0x70000547d000], log-server: dirlist journal prefix WiredTigerPreplog: No such file or directory
+2017-04-16T10:29:28.527+0800 E STORAGE  [thread1] WiredTiger (2) [1492309768:527429][5491:0x70000547d000], log-server: log pre-alloc server error: No such file or directory
+2017-04-16T10:29:28.527+0800 E STORAGE  [thread1] WiredTiger (2) [1492309768:527444][5491:0x70000547d000], log-server: log server error: No such file or directory
+2017-04-16T10:29:33.189+0800 I NETWORK  [conn4] end connection 127.0.0.1:64358 (0 connections now open)
+2017-04-16T10:29:36.005+0800 W FTDC     [ftdc] Uncaught exception in 'FileNotOpen Failed to open interim file data/diagnostic.data/metrics.interim.temp' in full-time diagnostic data capture subsystem. Shutting down the full-time diagnostic data capture subsystem.
+2017-04-16T10:29:36.848+0800 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-04-16T10:29:36.848+0800 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-04-16T10:29:36.852+0800 I CONTROL  [signalProcessingThread] now exiting
+2017-04-16T10:29:36.852+0800 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-04-16T10:29:36.852+0800 I NETWORK  [signalProcessingThread] closing listening socket: 6
+2017-04-16T10:29:36.852+0800 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-04-16T10:29:36.852+0800 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-04-16T10:29:36.852+0800 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-5050.sock
+2017-04-16T10:29:36.852+0800 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-04-16T10:29:36.852+0800 I NETWORK  [signalProcessingThread] shutdown: going to close sockets...
+2017-04-16T10:29:36.852+0800 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-04-16T10:29:36.988+0800 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2017-04-16T10:29:36.988+0800 I CONTROL  [signalProcessingThread] dbexit:  rc: 0
+2017-04-16T10:29:49.185+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-04-16T10:29:49.202+0800 I CONTROL  [initandlisten] MongoDB starting : pid=5560 port=5050 dbpath=data 64-bit host=Liu-Ren-de-MacBook-Pro.local
+2017-04-16T10:29:49.202+0800 I CONTROL  [initandlisten] db version v3.2.0
+2017-04-16T10:29:49.202+0800 I CONTROL  [initandlisten] git version: 45d947729a0315accb6d4f15a6b06be6d9c19fe7
+2017-04-16T10:29:49.202+0800 I CONTROL  [initandlisten] allocator: system
+2017-04-16T10:29:49.202+0800 I CONTROL  [initandlisten] modules: none
+2017-04-16T10:29:49.202+0800 I CONTROL  [initandlisten] build environment:
+2017-04-16T10:29:49.202+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-04-16T10:29:49.202+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-04-16T10:29:49.202+0800 I CONTROL  [initandlisten] options: { config: "mongod.conf", net: { bindIp: "127.0.0.1", http: { enabled: true }, port: 5050 }, processManagement: { pidFilePath: "mongod.pid" }, security: { authorization: "enabled" }, storage: { dbPath: "data" }, systemLog: { destination: "file", logAppend: true, path: "mongod.log" } }
+2017-04-16T10:29:49.203+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=4G,session_max=20000,eviction=(threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-04-16T10:29:49.453+0800 I CONTROL  [initandlisten] 
+2017-04-16T10:29:49.453+0800 I CONTROL  [initandlisten] ** WARNING: The server is started with the web server interface and access control.
+2017-04-16T10:29:49.453+0800 I CONTROL  [initandlisten] **          The web interfaces (rest, httpinterface and/or jsonp) are insecure 
+2017-04-16T10:29:49.453+0800 I CONTROL  [initandlisten] **          and should be disabled unless required for backward compatibility.
+2017-04-16T10:29:49.453+0800 I CONTROL  [initandlisten] 
+2017-04-16T10:29:49.453+0800 I CONTROL  [initandlisten] 
+2017-04-16T10:29:49.453+0800 I CONTROL  [initandlisten] ** WARNING: soft rlimits too low. Number of files is 256, should be at least 1000
+2017-04-16T10:29:49.453+0800 I NETWORK  [websvr] admin web console waiting for connections on port 6050
+2017-04-16T10:29:49.453+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'data/diagnostic.data'
+2017-04-16T10:29:49.453+0800 I NETWORK  [HostnameCanonicalizationWorker] Starting hostname canonicalization worker
+2017-04-16T10:29:49.476+0800 I NETWORK  [initandlisten] waiting for connections on port 5050
+2017-04-16T10:29:52.718+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64379 #1 (1 connection now open)
+2017-04-16T10:29:52.725+0800 I ACCESS   [conn1] note: no users configured in admin.system.users, allowing localhost access
+2017-04-16T10:29:52.734+0800 I ACCESS   [conn1] SCRAM-SHA-1 authentication failed for lrrLoveSqq on hackathon from client 127.0.0.1 ; UserNotFound Could not find user lrrLoveSqq@hackathon
+2017-04-16T10:29:54.456+0800 W NETWORK  [HostnameCanonicalizationWorker] Failed to obtain address information for hostname Liu-Ren-de-MacBook-Pro.local: nodename nor servname provided, or not known
+2017-04-16T10:29:58.748+0800 I NETWORK  [conn1] end connection 127.0.0.1:64379 (0 connections now open)
+2017-04-16T10:30:44.387+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64440 #2 (1 connection now open)
+2017-04-16T10:30:44.403+0800 I ACCESS   [conn2] SCRAM-SHA-1 authentication failed for lrrLoveSqq on hackathon from client 127.0.0.1 ; UserNotFound Could not find user lrrLoveSqq@hackathon
+2017-04-16T10:30:54.052+0800 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-04-16T10:30:54.052+0800 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-04-16T10:30:54.054+0800 I CONTROL  [signalProcessingThread] now exiting
+2017-04-16T10:30:54.054+0800 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-04-16T10:30:54.054+0800 I NETWORK  [signalProcessingThread] closing listening socket: 6
+2017-04-16T10:30:54.055+0800 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-04-16T10:30:54.055+0800 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-04-16T10:30:54.055+0800 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-5050.sock
+2017-04-16T10:30:54.055+0800 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-04-16T10:30:54.055+0800 I NETWORK  [signalProcessingThread] shutdown: going to close sockets...
+2017-04-16T10:30:54.055+0800 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-04-16T10:30:54.055+0800 I NETWORK  [conn2] end connection 127.0.0.1:64440 (0 connections now open)
+2017-04-16T10:30:54.204+0800 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2017-04-16T10:30:54.204+0800 I CONTROL  [signalProcessingThread] dbexit:  rc: 0
+2017-04-16T10:32:28.764+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-04-16T10:32:28.779+0800 I CONTROL  [initandlisten] MongoDB starting : pid=5660 port=5050 dbpath=data 64-bit host=Liu-Ren-de-MacBook-Pro.local
+2017-04-16T10:32:28.779+0800 I CONTROL  [initandlisten] db version v3.2.0
+2017-04-16T10:32:28.779+0800 I CONTROL  [initandlisten] git version: 45d947729a0315accb6d4f15a6b06be6d9c19fe7
+2017-04-16T10:32:28.779+0800 I CONTROL  [initandlisten] allocator: system
+2017-04-16T10:32:28.779+0800 I CONTROL  [initandlisten] modules: none
+2017-04-16T10:32:28.779+0800 I CONTROL  [initandlisten] build environment:
+2017-04-16T10:32:28.779+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-04-16T10:32:28.779+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-04-16T10:32:28.779+0800 I CONTROL  [initandlisten] options: { config: "mongod.conf", net: { bindIp: "127.0.0.1", http: { enabled: true }, port: 5050 }, processManagement: { pidFilePath: "mongod.pid" }, security: { authorization: "enabled" }, storage: { dbPath: "data" }, systemLog: { destination: "file", logAppend: true, path: "mongod.log" } }
+2017-04-16T10:32:28.780+0800 I -        [initandlisten] Detected data files in data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-04-16T10:32:28.780+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=4G,session_max=20000,eviction=(threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-04-16T10:32:29.554+0800 I CONTROL  [initandlisten] 
+2017-04-16T10:32:29.554+0800 I CONTROL  [initandlisten] ** WARNING: The server is started with the web server interface and access control.
+2017-04-16T10:32:29.554+0800 I CONTROL  [initandlisten] **          The web interfaces (rest, httpinterface and/or jsonp) are insecure 
+2017-04-16T10:32:29.554+0800 I CONTROL  [initandlisten] **          and should be disabled unless required for backward compatibility.
+2017-04-16T10:32:29.554+0800 I CONTROL  [initandlisten] 
+2017-04-16T10:32:29.554+0800 I CONTROL  [initandlisten] 
+2017-04-16T10:32:29.554+0800 I CONTROL  [initandlisten] ** WARNING: soft rlimits too low. Number of files is 256, should be at least 1000
+2017-04-16T10:32:29.555+0800 I NETWORK  [websvr] admin web console waiting for connections on port 6050
+2017-04-16T10:32:29.556+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'data/diagnostic.data'
+2017-04-16T10:32:29.556+0800 I NETWORK  [HostnameCanonicalizationWorker] Starting hostname canonicalization worker
+2017-04-16T10:32:29.556+0800 I NETWORK  [initandlisten] waiting for connections on port 5050
+2017-04-16T10:32:34.560+0800 W NETWORK  [HostnameCanonicalizationWorker] Failed to obtain address information for hostname Liu-Ren-de-MacBook-Pro.local: nodename nor servname provided, or not known
+2017-04-16T10:32:36.372+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64500 #1 (1 connection now open)
+2017-04-16T10:32:36.485+0800 I ACCESS   [conn1] Successfully authenticated as principal lrrLoveSqq on hackathon
+2017-04-16T10:32:50.584+0800 I ACCESS   [conn1] Unauthorized not authorized on hackathon to execute command { find: "passports", filter: { username: "liuren" }, projection: {} }
+2017-04-16T10:33:34.724+0800 I NETWORK  [conn1] end connection 127.0.0.1:64500 (0 connections now open)
+2017-04-16T10:33:41.861+0800 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-04-16T10:33:41.861+0800 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-04-16T10:33:41.863+0800 I CONTROL  [signalProcessingThread] now exiting
+2017-04-16T10:33:41.863+0800 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-04-16T10:33:41.863+0800 I NETWORK  [signalProcessingThread] closing listening socket: 6
+2017-04-16T10:33:41.863+0800 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-04-16T10:33:41.864+0800 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-04-16T10:33:41.864+0800 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-5050.sock
+2017-04-16T10:33:41.864+0800 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-04-16T10:33:41.864+0800 I NETWORK  [signalProcessingThread] shutdown: going to close sockets...
+2017-04-16T10:33:41.864+0800 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-04-16T10:33:41.986+0800 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2017-04-16T10:33:41.987+0800 I CONTROL  [signalProcessingThread] dbexit:  rc: 0
+2017-04-16T10:35:25.790+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-04-16T10:35:25.806+0800 I CONTROL  [initandlisten] MongoDB starting : pid=5765 port=5050 dbpath=data 64-bit host=Liu-Ren-de-MacBook-Pro.local
+2017-04-16T10:35:25.806+0800 I CONTROL  [initandlisten] db version v3.2.0
+2017-04-16T10:35:25.806+0800 I CONTROL  [initandlisten] git version: 45d947729a0315accb6d4f15a6b06be6d9c19fe7
+2017-04-16T10:35:25.806+0800 I CONTROL  [initandlisten] allocator: system
+2017-04-16T10:35:25.806+0800 I CONTROL  [initandlisten] modules: none
+2017-04-16T10:35:25.806+0800 I CONTROL  [initandlisten] build environment:
+2017-04-16T10:35:25.806+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-04-16T10:35:25.806+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-04-16T10:35:25.806+0800 I CONTROL  [initandlisten] options: { config: "mongod.conf", net: { bindIp: "127.0.0.1", http: { enabled: true }, port: 5050 }, processManagement: { pidFilePath: "mongod.pid" }, security: { authorization: "enabled" }, storage: { dbPath: "data" }, systemLog: { destination: "file", logAppend: true, path: "mongod.log" } }
+2017-04-16T10:35:25.806+0800 I -        [initandlisten] Detected data files in data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-04-16T10:35:25.806+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=4G,session_max=20000,eviction=(threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-04-16T10:35:26.644+0800 I CONTROL  [initandlisten] 
+2017-04-16T10:35:26.644+0800 I CONTROL  [initandlisten] ** WARNING: The server is started with the web server interface and access control.
+2017-04-16T10:35:26.644+0800 I CONTROL  [initandlisten] **          The web interfaces (rest, httpinterface and/or jsonp) are insecure 
+2017-04-16T10:35:26.644+0800 I CONTROL  [initandlisten] **          and should be disabled unless required for backward compatibility.
+2017-04-16T10:35:26.644+0800 I CONTROL  [initandlisten] 
+2017-04-16T10:35:26.644+0800 I CONTROL  [initandlisten] 
+2017-04-16T10:35:26.644+0800 I CONTROL  [initandlisten] ** WARNING: soft rlimits too low. Number of files is 256, should be at least 1000
+2017-04-16T10:35:26.645+0800 I NETWORK  [websvr] admin web console waiting for connections on port 6050
+2017-04-16T10:35:26.646+0800 I NETWORK  [HostnameCanonicalizationWorker] Starting hostname canonicalization worker
+2017-04-16T10:35:26.646+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'data/diagnostic.data'
+2017-04-16T10:35:26.646+0800 I NETWORK  [initandlisten] waiting for connections on port 5050
+2017-04-16T10:35:30.297+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64602 #1 (1 connection now open)
+2017-04-16T10:35:30.409+0800 I ACCESS   [conn1] Successfully authenticated as principal lrrLoveSqq on hackathon
+2017-04-16T10:35:31.648+0800 W NETWORK  [HostnameCanonicalizationWorker] Failed to obtain address information for hostname Liu-Ren-de-MacBook-Pro.local: nodename nor servname provided, or not known
+2017-04-16T10:35:47.261+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64653 #2 (2 connections now open)
+2017-04-16T10:35:47.357+0800 I ACCESS   [conn2] Successfully authenticated as principal lrrLoveSqq on hackathon
+2017-04-16T10:35:47.361+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64658 #3 (3 connections now open)
+2017-04-16T10:35:47.450+0800 I ACCESS   [conn3] Successfully authenticated as principal lrrLoveSqq on hackathon
