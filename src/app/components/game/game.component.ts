@@ -37,45 +37,20 @@ export class GameComponent implements OnInit {
   loopLock: boolean = true;
   // 手势结果信息
   gestureMessage: string = '';
+  // Leap Motion 检测循环
+  leapLoop;
 
   constructor(private userService: UserService, private router: Router,
               private gameService: GameService, public dialog: MdDialog) {
     // 没有授权则回到登录页
     userService.getUser().subscribe((data) => {
       if (data.isOK) {
-        this.games = gameService.getGames();
+        // 随机选出一道非手势题
         this.username = data.username;
+        this.games = gameService.getGames();
         let randomNumber = Math.floor(Math.random() * this.games.length);
         this.game = this.games[randomNumber];
         this.games.splice(randomNumber, 1);
-        let options = { enableGestures: true };
-        Leap.loop(options, function(frame) {
-          let frameString = "";
-          frame.hands.forEach(hand => {
-            if (hand.grabStrength == 1) {
-              frameString = 'stone';
-            } else {
-              let extendedFingers = 0;
-              for(var f = 0; f < hand.fingers.length; f++) {
-                var finger = hand.fingers[f];
-                if(finger.extended)
-                  extendedFingers++;
-              }
-              if (extendedFingers == 2)
-                frameString = 'scissor';
-              else if (extendedFingers == 5)
-                frameString = 'paper';
-            }
-            // 检测到结果
-            console.log(frameString);
-            if (frameString != "" && that.loopLock) {
-              console.log(frameString);
-              that.loopLock = false;
-              that.checkGesture(frameString, that.selectedGesture);
-              clearInterval(that.interval);
-            }
-          })
-        });
       } else {
         router.navigate(['/login', 'sign-in']);
       }
@@ -83,6 +58,45 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  // 启动 Leap Motion
+  runLeap() {
+    // 切换手势图片
+    let i = 0;
+    let that = this;
+    this.interval = setInterval(function() {
+      that.selectedGesture = that.gestures[i % 3];
+      i++;
+      if (i == 3) i = 0;
+    }, 200);
+    // Leap Motion
+    let options = { enableGestures: true };
+    this.leapLoop = Leap.loop(options, function(frame) {
+      let frameString = "";
+      frame.hands.forEach(hand => {
+        if (hand.grabStrength == 1) {
+          frameString = 'stone';
+        } else {
+          let extendedFingers = 0;
+          for(var f = 0; f < hand.fingers.length; f++) {
+            var finger = hand.fingers[f];
+            if(finger.extended)
+              extendedFingers++;
+          }
+          if (extendedFingers == 2)
+            frameString = 'scissor';
+          else if (extendedFingers == 5)
+            frameString = 'paper';
+        }
+        // 检测到结果
+        if (frameString != "" && that.loopLock) {
+          that.loopLock = false;
+          that.checkGesture(frameString, that.selectedGesture);
+          clearInterval(that.interval);
+        }
+      })
+    });
+  }
 
   // 显示下一题
   nextGame() {
@@ -93,23 +107,18 @@ export class GameComponent implements OnInit {
         this.router.navigate(['/home', this.username]);
       });
     }
+    //如果是第四题，停掉 Leap Motion
+    if (this.left == 2) {
+      this.leapLoop.disconnect();
+    }
     // 计算下一题
     // 如果是第三题，则石头剪刀布
     if (this.left == 3) {
-      for (let i = 0; i < this.games.length; i++) {
-        if (this.games[i].type == 'gesture') {
-          this.game = this.games[i];
-          this.games.splice(i, 1);
-        }
-      }
+      this.game.type = 'gesture';
+      this.runLeap();
     // 否则随机抽题
     } else {
-      let randomNumber;
-      while (true) {
-        randomNumber = Math.floor(Math.random() * this.games.length);
-        if (this.games[randomNumber].type != 'gesture')
-          break;
-      }
+      let randomNumber = Math.floor(Math.random() * this.games.length);
       this.game = this.games[randomNumber];
       this.games.splice(randomNumber, 1);
     }
@@ -149,6 +158,9 @@ export class GameComponent implements OnInit {
 
   // 判断电脑和玩家的输赢情况
   checkGesture(user: string, computer: string) {
+    // 手势结果输出
+    console.log('user:', user);
+    console.log('computer:', computer);
     // 平局
     if (computer == user) {
       this.gestureMessage = '真尴尬~打平了';
