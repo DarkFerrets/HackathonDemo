@@ -5,6 +5,8 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 import { UserService } from '../../services/user/user.service';
 import { GameService } from '../../services/game/game.service';
 
+declare const Leap: any;
+
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -29,6 +31,13 @@ export class GameComponent implements OnInit {
   // 用户答对的题数
   correct: number = 0;
 
+  // 手势循环
+  interval;
+  // 循环锁
+  loopLock: boolean = true;
+  // 手势结果信息
+  gestureMessage: string = '';
+
   constructor(private userService: UserService, private router: Router,
               private gameService: GameService, public dialog: MdDialog) {
     // 没有授权则回到登录页
@@ -43,13 +52,42 @@ export class GameComponent implements OnInit {
         // 切换手势图片
         let i = 0;
         let that = this;
-        setInterval(function() {
+        this.interval = setInterval(function() {
           if (that.game && that.game.type == 'gesture') {
             i++;
             that.selectedGesture = that.gestures[i % 3];
             if (i > 10000) i = 0;
           }
         }, 200);
+        // Leap Motion
+        let options = { enableGestures: true };
+        Leap.loop(options, function(frame) {
+          let frameString = "";
+          frame.hands.forEach(hand => {
+            if (hand.grabStrength == 1) {
+              frameString = 'stone';
+            } else {
+              let extendedFingers = 0;
+              for(var f = 0; f < hand.fingers.length; f++) {
+                var finger = hand.fingers[f];
+                if(finger.extended)
+                  extendedFingers++;
+              }
+              if (extendedFingers == 2)
+                frameString = 'scissor';
+              else if (extendedFingers == 5)
+                frameString = 'paper';
+            }
+            // 检测到结果
+            console.log(frameString);
+            if (frameString != "" && that.loopLock) {
+              console.log(frameString);
+              that.loopLock = false;
+              that.checkGesture(frameString, that.selectedGesture);
+              clearInterval(that.interval);
+            }
+          })
+        });
       } else {
         router.navigate(['/login', 'sign-in']);
       }
@@ -60,15 +98,32 @@ export class GameComponent implements OnInit {
 
   // 显示下一题
   nextGame() {
+    // 完成题目跳回主页
     if (this.left == 0) {
       let dialogRef = this.dialog.open(ResultComponent);
       dialogRef.afterClosed().subscribe( result => {
         this.router.navigate(['/home', this.username]);
       });
     }
-    let randomNumber = Math.floor(Math.random() * this.games.length);
-    this.game = this.games[randomNumber];
-    this.games.splice(randomNumber, 1);
+    // 计算下一题
+    // 如果是第三题，则石头剪刀布
+    if (this.left == 3) {
+      for (let i = 0; i < this.games.length; i++) {
+        if (this.games[i].type == 'gesture') {
+          this.game = this.games[i];
+          this.games.splice(i, 1);
+        }
+      }
+    // 否则随机抽题
+    } else {
+      while (true) {
+        let randomNumber = Math.floor(Math.random() * this.games.length);
+        if (this.games[randomNumber].type != 'gesture')
+          break;
+      }
+      this.game = this.games[randomNumber];
+      this.games.splice(randomNumber, 1);
+    }
     this.selected = null;
     this.guess = '';
   }
@@ -89,7 +144,52 @@ export class GameComponent implements OnInit {
     this.nextGame();
   }
 
-  checkGesture() {
+  // 平局
+  even() {
+    this.loopLock = true;
+    let i = 0;
+    let that = this;
+    this.interval = setInterval(function() {
+      if (that.game && that.game.type == 'gesture') {
+        i++;
+        that.selectedGesture = that.gestures[i % 3];
+        if (i > 10000) i = 0;
+      }
+    }, 200);
+  }
+
+  // 判断电脑和玩家的输赢情况
+  checkGesture(user: string, computer: string) {
+    // 平局
+    if (computer == user) {
+      this.gestureMessage = '真尴尬~打平了';
+      let that = this;
+      setTimeout(function() {
+        that.gestureMessage = '';
+        that.even();
+      }, 2000);
+    // 电脑胜
+    } else if ((computer == 'paper' && user == 'stone') ||
+        (computer == 'stone' && user == 'scissor') ||
+        (computer == 'scissor') && user == 'paper') {
+      this.left--;
+      this.gestureMessage = '很抱歉，你输了 QuQ';
+      let that = this;
+      setTimeout(function() {
+        this.gestureMessage = '';
+        that.nextGame();
+      }, 2000);
+    // 玩家胜
+    } else {
+      this.correct++;
+      this.left--;
+      this.gestureMessage = '恭喜你，获胜啦 ♪(^∇^*)';
+      let that = this;
+      setTimeout(function() {
+        this.gestureMessage = '';
+        that.nextGame();
+      }, 2000);
+    }
   }
 
 }

@@ -33,5 +33,6 @@
   <!-- 手势题 -->
   <md-card class="question" *ngIf="game && game.type == 'gesture'">
     <div class="gesture" [style.background-image]="'url(/assets/images/' + selectedGesture + '.png)'"></div>
+    <div class="gesture-message">{{gestureMessage}}</div>
   </md-card>
 </div>

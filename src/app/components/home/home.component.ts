@@ -7,7 +7,7 @@ import { User } from '../../services/user/user';
 import { BasketService } from '../../services/basket/basket.service';
 import { PlaceService } from '../../services/place/place.service'
 
-declare var AMap: any;
+declare const AMap: any;
 declare const AMapUI: any;
 
 @Component({
