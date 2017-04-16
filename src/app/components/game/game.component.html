@@ -15,6 +15,7 @@
       <md-radio-button value="3">{{game.options[2]}}</md-radio-button><br>
       <md-radio-button value="4">{{game.options[3]}}</md-radio-button>
     </md-radio-group>
+    <div class="error-message">{{multipleError}}</div>
     <div class="button-container">
       <button md-button class="submit-button" (click)="checkMultiple()">提 交</button>
     </div>
@@ -25,6 +26,7 @@
     <md-input-container>
       <input mdInput placeholder="你的答案" [(ngModel)]="guess">
     </md-input-container>
+    <div class="error-message">{{riddleError}}</div>
     <div class="button-container">
       <button md-button class="submit-button" (click)="checkRiddle()" *ngIf="left == 0">提 交</button>
       <button md-button class="submit-button" (click)="checkRiddle()" *ngIf="left != 0">下一题</button>

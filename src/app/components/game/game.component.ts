@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MdDialog, MdDialogRef, MdSnackBar } from '@angular/material';
 
 import { UserService } from '../../services/user/user.service';
 import { GameService } from '../../services/game/game.service';
@@ -20,7 +20,7 @@ export class GameComponent implements OnInit {
   username = "";
 
   // 用户选择的选择题答案
-  selected: number;
+  selected: number = null;
   // 用户的解谜题答案
   guess: string;
   gestures = ['paper', 'stone', 'scissor'];
@@ -40,8 +40,13 @@ export class GameComponent implements OnInit {
   // Leap Motion 检测循环
   leapLoop;
 
+  // 报错信息
+  multipleError: string = '';
+  riddleError: string = '';
+
   constructor(private userService: UserService, private router: Router,
-              private gameService: GameService, public dialog: MdDialog) {
+              private gameService: GameService, public dialog: MdDialog,
+              private snackBar: MdSnackBar) {
     // 没有授权则回到登录页
     userService.getUser().subscribe((data) => {
       if (data.isOK) {
@@ -102,10 +107,17 @@ export class GameComponent implements OnInit {
   nextGame() {
     // 完成题目跳回主页
     if (this.left == 0) {
-      let dialogRef = this.dialog.open(ResultComponent);
-      dialogRef.afterClosed().subscribe( result => {
+      if (this.correct >= 4) {
+        let dialogRef = this.dialog.open(ResultComponent);
+        dialogRef.afterClosed().subscribe(result => {
+          this.router.navigate(['/home', this.username]);
+        });
+      } else {
+        this.snackBar.open('很抱歉，你未通过测试', '知道了 QuQ', {
+          duration: 2000
+        });
         this.router.navigate(['/home', this.username]);
-      });
+      }
     }
     //如果是第四题，停掉 Leap Motion
     if (this.left == 2) {
@@ -128,6 +140,11 @@ export class GameComponent implements OnInit {
 
   // 提交选择题
   checkMultiple() {
+    if (this.selected == null) {
+      this.multipleError = '请选择一个你认为正确的选项';
+      return;
+    }
+    this.multipleError = '';
     // 答对加一分
     if (this.selected == this.game.answer) this.correct++;
     this.left--;
@@ -136,6 +153,11 @@ export class GameComponent implements OnInit {
 
   // 提交解谜题
   checkRiddle() {
+    if (this.guess == '') {
+      this.riddleError = '答案不能为空';
+      return;
+    }
+    this.riddleError = '';
     // 答对加一分
     if (this.guess == this.game.answer) this.correct++;
     this.left--;
