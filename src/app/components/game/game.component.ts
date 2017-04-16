@@ -43,23 +43,11 @@ export class GameComponent implements OnInit {
     // 没有授权则回到登录页
     userService.getUser().subscribe((data) => {
       if (data.isOK) {
-        // 随机选出一道题
         this.games = gameService.getGames();
         this.username = data.username;
         let randomNumber = Math.floor(Math.random() * this.games.length);
         this.game = this.games[randomNumber];
         this.games.splice(randomNumber, 1);
-        // 切换手势图片
-        let i = 0;
-        let that = this;
-        this.interval = setInterval(function() {
-          if (that.game && that.game.type == 'gesture') {
-            i++;
-            that.selectedGesture = that.gestures[i % 3];
-            if (i > 10000) i = 0;
-          }
-        }, 200);
-        // Leap Motion
         let options = { enableGestures: true };
         Leap.loop(options, function(frame) {
           let frameString = "";

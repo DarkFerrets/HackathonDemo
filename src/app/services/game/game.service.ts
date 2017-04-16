@@ -41,9 +41,9 @@ export class GameService {
       answer: 4
     },
     // 手势
-    {
-      type: 'gesture'
-    },
+    // {
+    //   type: 'gesture'
+    // },
     // 猜谜
     {
       type: 'riddle',
