@@ -23,7 +23,7 @@
       <md-card>
         <md-card-title class="title">合成台</md-card-title>
         <div id="crafting-table">
-          <div class="crafting-item" *ngFor="let material of usedMaterials" [style.background-image]="'url(' + material.image + ')'"></div>
+          <div class="crafting-item" *ngFor="let material of usedMaterials" [style.background-image]="'url(' + material.image + ')'" (click)="putBack(material)"></div>
         </div>
         <div class="submit">
           <button md-raised-button (click)="getBonues()">合成</button>

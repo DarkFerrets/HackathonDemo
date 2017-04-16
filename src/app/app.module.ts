@@ -17,6 +17,7 @@ import { HomeComponent } from './components/home/home.component';
 import { WelcomeComponent } from './components/home/home.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { BonuesComponent } from './components/basket/basket.component';
+import { FaileComponent } from './components/basket/basket.component';
 import { GameComponent } from './components/game/game.component';
 import { ResultComponent } from './components/game/game.component';
 
@@ -36,7 +37,8 @@ import { PlaceService } from './services/place/place.service';
     BasketComponent,
     BonuesComponent,
     GameComponent,
-    ResultComponent
+    ResultComponent,
+    FaileComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import { PlaceService } from './services/place/place.service';
   entryComponents: [
     WelcomeComponent,
     BonuesComponent,
-    ResultComponent
+    ResultComponent,
+    FaileComponent
   ],
   providers: [
     AuthService,

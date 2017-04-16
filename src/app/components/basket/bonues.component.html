@@ -1,6 +1,6 @@
-<div class="bonues-layout">
+<div class="bonues-layout" *ngIf = "foodUrl != '' ">
   <img class="success" src="../../assets/images/success.svg">
-  <div class="title">成功合成 虾仁拉肠 一份！</div>
-  <div>获得美团银记拉肠店 5 元抵用券</div>
-  <img class="food" src="../../assets/images/food1.jpg">
+  <div class="title">成功合成 {{foodName}} 一份！</div>
+  <div>获得天猫超市{{foodName}} 5 元抵用券</div>
+  <div class="food" [style.background-image]="'url(' + foodUrl + ')'"></div>
 </div>

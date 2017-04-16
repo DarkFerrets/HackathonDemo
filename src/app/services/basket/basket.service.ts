@@ -19,7 +19,9 @@ export class BasketService {
     { name: '豉汁凤爪', materials: '凤爪三只、卤料一份', image: '/assets/images/food2.jpg' },
     { name: '马拉糕', materials: '面粉一碗、鸡蛋一个、黑糖一碗', image: '/assets/images/food3.jpg' },
     { name: '鸡蛋拉肠', materials: '鸡蛋一份、米浆一碗、菜心一根', image: '/assets/images/food4.jpg' }
-  ]
+  ];
+
+  food: string = "";
 
   constructor() {}
 
@@ -33,10 +35,12 @@ export class BasketService {
     return this.recipes;
   }
 
-  // deleteMaterial(name) {
-  //   this.materials= this.materials.filter(function(element) {
-  //     return element[name] != name;
-  //   });
-  // }
+  setFood( foodName ) {
+    this.food = foodName;
+  }
+
+  getFood() {
+    return this.food;
+  }
 
 }
