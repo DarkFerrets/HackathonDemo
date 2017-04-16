@@ -116,8 +116,9 @@ export class GameComponent implements OnInit {
       }
     // 否则随机抽题
     } else {
+      let randomNumber;
       while (true) {
-        let randomNumber = Math.floor(Math.random() * this.games.length);
+        randomNumber = Math.floor(Math.random() * this.games.length);
         if (this.games[randomNumber].type != 'gesture')
           break;
       }
