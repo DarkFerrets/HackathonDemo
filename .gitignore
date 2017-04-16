@@ -2,6 +2,8 @@
 
 # 数据库
 /data
+mongod.log
+mongod.pid
 
 # compiled output
 /dist

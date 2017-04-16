@@ -189,3 +189,19 @@
 2017-04-16T10:35:47.357+0800 I ACCESS   [conn2] Successfully authenticated as principal lrrLoveSqq on hackathon
 2017-04-16T10:35:47.361+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:64658 #3 (3 connections now open)
 2017-04-16T10:35:47.450+0800 I ACCESS   [conn3] Successfully authenticated as principal lrrLoveSqq on hackathon
+2017-04-16T10:36:54.521+0800 I NETWORK  [conn2] end connection 127.0.0.1:64653 (2 connections now open)
+2017-04-16T10:36:54.521+0800 I NETWORK  [conn3] end connection 127.0.0.1:64658 (2 connections now open)
+2017-04-16T10:36:54.521+0800 I NETWORK  [conn1] end connection 127.0.0.1:64602 (2 connections now open)
+2017-04-16T10:36:55.870+0800 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-04-16T10:36:55.870+0800 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-04-16T10:36:55.874+0800 I CONTROL  [signalProcessingThread] now exiting
+2017-04-16T10:36:55.874+0800 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-04-16T10:36:55.874+0800 I NETWORK  [signalProcessingThread] closing listening socket: 6
+2017-04-16T10:36:55.874+0800 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-04-16T10:36:55.874+0800 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-04-16T10:36:55.874+0800 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-5050.sock
+2017-04-16T10:36:55.874+0800 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-04-16T10:36:55.874+0800 I NETWORK  [signalProcessingThread] shutdown: going to close sockets...
+2017-04-16T10:36:55.874+0800 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-04-16T10:36:55.993+0800 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2017-04-16T10:36:55.994+0800 I CONTROL  [signalProcessingThread] dbexit:  rc: 0
